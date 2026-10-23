@@ -3,7 +3,8 @@ import {
     MIDIControllers,
     MIDIMessageTypes,
     MIDIUtils,
-    SpessaSynthCoreUtils
+    SpessaSynthCoreUtils,
+    type MIDILoop
 } from "spessasynth_core";
 import { songChangeType } from "./enums.js";
 import { MIDIData } from "./midi_data.js";
@@ -193,6 +194,13 @@ export class Sequencer {
     public set loopCount(val) {
         this._loopCount = val;
         this.sendMessage("setLoopCount", val);
+    }
+
+    /**
+     * The current loop
+     */
+    public setLoop(val: MIDILoop) {
+        this.sendMessage("setLoop", val);
     }
 
     /**
@@ -491,6 +499,7 @@ export class Sequencer {
 
             case "loopCountChange": {
                 this._loopCount = m.data.newCount;
+                this.callEventInternal("loopCountChange", this._loopCount);
                 break;
             }
 

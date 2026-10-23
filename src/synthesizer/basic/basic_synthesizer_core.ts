@@ -307,6 +307,11 @@ export abstract class BasicSynthesizerCore {
                         break;
                     }
 
+                    case "setLoop": {
+                        seq.setLoop(seqMsg.data);
+                        break;
+                    }
+
                     case "changeSong": {
                         switch (seqMsg.data.changeType) {
                             case songChangeType.shuffleOff: {

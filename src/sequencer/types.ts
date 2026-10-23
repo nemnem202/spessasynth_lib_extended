@@ -1,10 +1,11 @@
-import { type SongChangeType } from "./enums";
 import {
     type BasicMIDI,
+    type MIDILoop,
     type MIDIMessage,
     type SequencerEvent
 } from "spessasynth_core";
 import type { MIDIData } from "./midi_data";
+import type { SongChangeType } from "./enums";
 
 export interface SequencerOptions {
     /**
@@ -39,6 +40,8 @@ export interface SequencerMessageData {
     setPlaybackRate: number;
     // Count
     setLoopCount: number;
+    // Loop
+    setLoop: MIDILoop;
     // [changeType, data]
     changeSong: {
         changeType: SongChangeType;
@@ -109,4 +112,6 @@ export interface WorkletSequencerEventType {
     };
 
     midiError: Error;
+
+    loopCountChange: number;
 }

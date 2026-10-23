@@ -24,7 +24,11 @@ export class SeqEventHandler {
         metaEvent: new Map<string, SequencerEventCallback<"metaEvent">>(),
         timeChange: new Map<string, SequencerEventCallback<"timeChange">>(),
         midiError: new Map<string, SequencerEventCallback<"midiError">>(),
-        textEvent: new Map<string, SequencerEventCallback<"textEvent">>()
+        textEvent: new Map<string, SequencerEventCallback<"textEvent">>(),
+        loopCountChange: new Map<
+            string,
+            SequencerEventCallback<"loopCountChange">
+        >()
     };
 
     // noinspection JSUnusedGlobalSymbols
